@@ -25,8 +25,12 @@ def principale():
 
         attendre_evenement(f,500)
         ev = dernier_evenement(f)
+
+        #affichage de la défaite (a faire affciher score)
         if play == 3: 
-            texte(f, 1000, 200, 35, "Perdue")
+            Ptexte = "Vous avez fait un score de : " + str(score)
+            texte(f, 1000, 150, 35, "Perdue")
+            texte(f, 820, 200, 25, Ptexte)
             
         if play == 0 or play == 3:
             ajouter_bouton(f, "play", 900, 300, 1300, 500, "Play")
@@ -65,10 +69,6 @@ def principale():
             ##sortie du cadre
             if x > 799 or y > 799 or x < 0 or y < 0:
                 play = 3
-                score = 0
-                [x_pomme,y_pommme] = [600, 400]
-                co_serpant = [[400,400],[360,400],[320,400],[280,400]]
-                d = "right"
                 effacer(f)
 
             ##mord la queue
