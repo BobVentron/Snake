@@ -1,10 +1,12 @@
 from qtido import * 
 
+#affichage du serpant
 def serpantgeneration(f,co):
     couleur(f,0,0,0.8)
     for e in co:
         disque(f,e[0]+20,e[1]+20,15)
 
+#gestion du deplacement du serpant quand le joueur a apuyer sur une touche
 def serpantdeplacement(f,co,direction,d):
     if direction == "top": 
         new_tete = [[(int(co[0][0])),(int(co[0][1])-40)]]
@@ -32,6 +34,7 @@ def serpantdeplacement(f,co,direction,d):
 
     return [new_serpant, d]
 
+#gestion de l'agrandissement du serpant quand ce dernier a mangé une pomme 
 def serpantagrandi(f,co,direction) :
     if direction == "top": 
         new_tete = [[(int(co[0][0])),(int(co[0][1])-40)]]

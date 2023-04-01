@@ -12,6 +12,7 @@ def principale():
     
     while not est_fermee(f) : 
 
+        #gestion de la génération de la partie
         if play == 1 :
             supprime_widgets(f)
             effacer(f)
@@ -26,12 +27,13 @@ def principale():
         attendre_evenement(f,500)
         ev = dernier_evenement(f)
 
-        #affichage de la défaite (a faire affciher score)
+        #affichage de la défaite avec l'affichage du score
         if play == 3: 
             Ptexte = "Vous avez fait un score de : " + str(score)
             texte(f, 1000, 150, 35, "Perdue")
             texte(f, 820, 200, 25, Ptexte)
             
+        #reset de la partie et afficahge du menu
         if play == 0 or play == 3:
             ajouter_bouton(f, "play", 900, 300, 1300, 500, "Play")
             [x_pomme,y_pommme] = [600, 400]
@@ -40,20 +42,25 @@ def principale():
             score = 0
             play = 2
             fondf(f)
+
+        #attendre que la partie soit lancée
         if ev == "play":
             play = 1
 
+        #gestion des evenements de la partie
         if play == 1 :
             top1 = 16777235
             bot1 = 16777237
             left1 = 16777234
             right1 = 16777236
 
+            #le serpant mange la pomme
             if co_serpant[0] == [x_pomme,y_pommme]:
                 [co_serpant, d] = serpantagrandi(f, co_serpant, d)
                 [x_pomme,y_pommme]= [(randrange(0, 20))*40, (randrange(0, 20))*40]
                 score += 1
             
+            #le joueur appuie sur une touche
             if ev == top1: 
                 [co_serpant, d] = serpantdeplacement(f, co_serpant, "top",d)
             elif ev == bot1: 
